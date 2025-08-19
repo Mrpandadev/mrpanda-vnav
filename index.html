@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mr. Panda</title>
+  <!-- Play font -->
+  <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #ffd700;
+      --dark: #000;
+      --light: #ccc;
+      --warn: #ff4d4d;
+    }
+    body {
+      margin: 0;
+      font-family: 'Play', sans-serif;
+      background-color: var(--dark);
+      color: #fff;
+      line-height: 1.6;
+    }
+    nav {
+      background-color: #111;
+      border-bottom: 2px solid var(--gold);
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 0.3em 0.6em;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    nav button.active,
+    nav button:hover {
+      background-color: var(--gold);
+      color: #000;
+      transform: scale(1.05);
+    }
+    header {
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+    h1 {
+      font-size: 3em;
+      color: var(--gold);
+      margin-bottom: 0.3em;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+    .tagline {
+      font-size: 1.3em;
+      color: var(--light);
+      margin-bottom: 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 1em;
+      color: #000;
+      background-color: var(--gold);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+    }
+    .cta-button:hover {
+      background-color: #fff;
+      color: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255,255,255,0.3);
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2em;
+      color: var(--gold);
+      margin-bottom: 1em;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .video-thumb {
+      background-color: #111;
+      border: 1px solid #333;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .video-thumb:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    .video-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .video-thumb p {
+      margin: 0;
+      padding: 10px;
+      font-weight: 700;
+      color: var(--light);
+    }
+    .video-thumb p a {
+      color: var(--light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .video-thumb p a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+    .bio-text {
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: var(--light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .contact-info p {
+      font-weight: 700;
+      margin: 0.3em 0;
+    }
+    .contact-info .warn {
+      color: var(--warn);
+    }
+    .contact-info a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      padding: 40px 20px;
+      border-top: 1px solid #333;
+      margin-top: 60px;
+    }
+    footer strong {
+      color: var(--gold);
+    }
+    .page {
+      display: none;
+      min-height: 60vh;
+      padding-bottom: 60px;
+    }
+    .page.active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <button class="active" onclick="switchPage('home')">Home</button>
+    <button onclick="switchPage('about')">Over mij</button>
+    <button onclick="switchPage('contact')">Contact</button>
+  </nav>
+
+  <div id="home" class="page active">
+    <header>
+      <h1>Mr. Panda</h1>
+      <p class="tagline">Unieke video's. Gekke energie. 100% creator power.</p>
+      <a href="https://youtube.com/@mr.pandaaaaaa" target="_blank" rel="noopener noreferrer" class="cta-button">Bekijk op YouTube</a>
+    </header>
+    <section>
+      <h2>Populaire video's</h2>
+      <div class="video-grid">
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/Q-6gQrtGTKg/hqdefault.jpg" alt="Video 1" />
+          <p><a href="https://youtu.be/Q-6gQrtGTKg" target="_blank" rel="noopener noreferrer">Tafeldiploma Geheim</a></p>
+        </div>
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/PhCS_rs9634/hqdefault.jpg" alt="Video 2" />
+          <p><a href="https://youtu.be/PhCS_rs9634" target="_blank" rel="noopener noreferrer">Bouw challenge met een kijker? 🚧</a></p>
+        </div>
+        <div class="video-thumb">
+          <img src="https://i.ytimg.com/vi/GpnfLLh6KUc/hqdefault.jpg" alt="Video 3" />
+          <p><a href="https://youtu.be/GpnfLLh6KUc" target="_blank" rel="noopener noreferrer">Scratch</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="about" class="page">
+    <section>
+      <h2>Over Mr. Panda</h2>
+      <p class="bio-text">
+        #Mr. Panda<br>
+        Binnenkort...
+      </p>
+    </section>
+  </div>
+
+  <div id="contact" class="page">
+    <section class="contact-info">
+      <h2>Contact</h2>
+      <p class="warn">Let op: ik accepteer geen emails meer!</p>
+      <p>Email: <a href="mailto:misterpandastudio@gmail.com">misterpandastudio@gmail.com</a></p>
+      <p>YouTube: <a href="https://youtube.com/@mr.pandaaaaaa" target="_blank" rel="noopener noreferrer">@mr.pandaaaaaa</a></p>
+    </section>
+  </div>
+
+  <footer>
+    <p>Mr. Panda maakt deel uit van <strong>Mr. Panda Studio</strong></p>
+  </footer>
+
+  <script>
+    function switchPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
